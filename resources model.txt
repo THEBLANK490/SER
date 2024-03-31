@@ -1,0 +1,32 @@
+MODEL-1
+https://www.kaggle.com/code/ashishsingh226/speech-emotion-recognition-using-lstm
+
+    model = tf.keras.Sequential()
+
+    model.add(LSTM(128, input_shape=input_shape, return_sequences=True))
+    model.add(LSTM(64))
+    
+    model.add(Dense(64, activation='relu'))
+    model.add(Dropout(0.3))
+
+    model.add(Dense(6, activation='softmax'))
+
+
+MODEL-2
+https://www.kaggle.com/code/blitzapurv/speech-emotion-recognition-using-lstm
+
+model=Sequential()
+
+model.add(TimeDistributed(Conv1D(16, 3, padding='same', activation='relu'),
+                            input_shape=input_shape))
+model.add(TimeDistributed(BatchNormalization()))
+#model.add(TimeDistributed(MaxPooling2D((2,1))))
+
+model.add(TimeDistributed(Flatten()))
+model.add(LSTM(32))
+model.add(Dropout(0.2))
+
+model.add(Dense(units=32, activation='relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(units=8, activation='softmax'))
